@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">EspressoRobot</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="login_fail">Wrong email or password!</string>
+    <string name="missing_fields">Please fill email and password fieds</string>
+    <string name="name_surname">Name Surname</string>
+    <string name="mail_example_com">mail@example.com</string>
+    <string name="settings">Settings</string>
+    <string name="enable_notif">Enable Notifications</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="ok">OK</string>
+</resources>

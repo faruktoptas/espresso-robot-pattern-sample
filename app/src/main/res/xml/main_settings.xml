@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="pref_show_detail_first"
+        android:title="@string/enable_notif"
+        android:defaultValue="true"/>
+
+    <SwitchPreference
+        android:key="pref_readability"
+        android:title="@string/night_mode"
+        android:defaultValue="false" />
+
+
+</PreferenceScreen>
