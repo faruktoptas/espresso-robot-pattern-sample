@@ -25,15 +25,46 @@ class LoginTest {
     }
 
     @Test
+    fun loginMissingEmailPassword() {
+        robot
+                .clickLogin()
+                .matchErrorText(R.string.missing_fields)
+    }
+
+    @Test
+    fun loginMissingPassword() {
+        robot
+                .setEmail("mail@example.com")
+                .clickLogin()
+                .matchErrorText(R.string.missing_fields)
+    }
+
+    @Test
     fun loginWrongPassword() {
         robot
-                .sleep()
                 .setEmail("mail@example.com")
-                .sleep()
                 .setPassword("wrong")
-                .sleep()
                 .clickLogin()
-                .sleep()
                 .matchErrorText(R.string.login_fail)
+    }
+
+    @Test
+    fun loginSuccess() {
+        robot
+                .setEmail("mail@example.com")
+                .setPassword("pass")
+                .clickLogin()
+                .matchText(R.id.tvName, mActivityTestRule.activity.getString(R.string.name_surname))
+    }
+
+    @Test
+    fun loginProfileAndSettings() {
+        robot
+                .setEmail("mail@example.com")
+                .setPassword("pass")
+                .clickLogin()
+                .clickSettings()
+                .toggleNotifications()
+                .toggleNightMode()
     }
 }
