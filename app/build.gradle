@@ -1,15 +1,50 @@
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.stanfy.spoon:spoon-gradle-plugin:1.2.2'
+    }
+}
+
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'spoon'
+
+
+
+
 android {
+
+    spoon {
+        // for debug output
+        debug = true
+
+        // To run a single test class
+        //className = 'com.example.espressorobot.DenemeTest'
+
+        // To run a single method in TestCase
+        //methodName = 'testMyApp'
+
+        // To execute the tests device by device */
+        //sequential = true
+
+        // To grant permissions to Android M >= devices */
+        //grantAllPermissions = true
+    }
+
     compileSdkVersion 25
     defaultConfig {
         applicationId "com.example.espressorobot"
         minSdkVersion 15
         targetSdkVersion 25
+        buildToolsVersion "25.0.2"
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -23,31 +58,19 @@ android {
     }
 }
 
-/*task copyTestClasses(type: Copy) {
-    from "build/tmp/kotlin-classes/debugUnitTest"
-    into "build/intermediates/classes/debug"
-}
-// for instrumented test
-task copySdkClasses(type: Copy) {
-    from "build/tmp/kotlin-classes/debugAndroidTest"
-    into "build/intermediates/classes/androidTest/debug"
-}
-
-afterEvaluate {
-    compileDebugUnitTestSources.dependsOn copyTestClasses
-    compileReleaseUnitTestSources.dependsOn copyTestClasses
-
-    compileDebugAndroidTestSources.dependsOn copySdkClasses
-}*/
-
 
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:25.4.0'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    compile 'com.android.support:appcompat-v7:25.4.0'
+    compile 'com.jraska:falcon:1.0.4'
 
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    testCompile 'junit:junit:4.12'
+    androidTestCompile 'com.android.support.test:runner:1.0.1'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestCompile 'com.squareup.spoon:spoon-client:1.7.1'
+    androidTestCompile 'com.jraska:falcon-spoon-compat:1.0.4'
+
 }

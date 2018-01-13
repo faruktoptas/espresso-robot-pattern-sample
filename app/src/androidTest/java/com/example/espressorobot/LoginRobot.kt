@@ -34,4 +34,9 @@ class LoginRobot(private val context: Context) : BaseTestRobot() {
         Thread.sleep(500)
     }
 
+    fun screenShot(tag:String) = apply {
+        sleep()
+        TestUtils.screenShot(tag)
+    }
+
 }

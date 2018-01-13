@@ -28,6 +28,7 @@ class LoginTest {
     fun loginMissingEmailPassword() {
         robot
                 .clickLogin()
+                .screenShot("loginMissingEmailPassword")
                 .matchErrorText(R.string.missing_fields)
     }
 
@@ -36,6 +37,7 @@ class LoginTest {
         robot
                 .setEmail("mail@example.com")
                 .clickLogin()
+                .screenShot("loginMissingPassword")
                 .matchErrorText(R.string.missing_fields)
     }
 
@@ -45,6 +47,7 @@ class LoginTest {
                 .setEmail("mail@example.com")
                 .setPassword("wrong")
                 .clickLogin()
+                .screenShot("loginWrongPassword")
                 .matchErrorText(R.string.login_fail)
     }
 
@@ -54,6 +57,7 @@ class LoginTest {
                 .setEmail("mail@example.com")
                 .setPassword("pass")
                 .clickLogin()
+                .screenShot("loginSuccess")
                 .matchText(R.id.tvName, mActivityTestRule.activity.getString(R.string.name_surname))
     }
 
@@ -62,9 +66,14 @@ class LoginTest {
         robot
                 .setEmail("mail@example.com")
                 .setPassword("pass")
+                .screenShot("login")
                 .clickLogin()
+                .screenShot("profile")
                 .clickSettings()
+                .screenShot("settings")
                 .toggleNotifications()
+                .screenShot("toggle1")
                 .toggleNightMode()
+                .screenShot("toggle2")
     }
 }
