@@ -33,5 +33,13 @@ open class BaseTestRobot {
                 .atPosition(position).perform(ViewActions.click())
     }
 
+    fun sleep() = apply {
+        Thread.sleep(500)
+    }
+
+    fun screenShot(tag: String) {
+        sleep()
+        TestUtils.screenShot(tag)
+    }
 
 }

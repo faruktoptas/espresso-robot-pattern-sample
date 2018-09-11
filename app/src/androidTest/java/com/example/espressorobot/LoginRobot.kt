@@ -7,36 +7,16 @@ import android.support.test.espresso.ViewInteraction
  * Created by ftoptas on 20/12/17.
  */
 
-class LoginRobot(private val context: Context) : BaseTestRobot() {
+fun login(func: LoginRobot.() -> Unit) = LoginRobot().apply { func() }
 
-    fun setEmail(email: String) = apply { fillEditText(R.id.etEmail, email); }
+class LoginRobot : BaseTestRobot() {
 
-    fun setPassword(pass: String) = apply { fillEditText(R.id.etPassword, pass) }
+    fun setEmail(email: String) = fillEditText(R.id.etEmail, email);
 
-    fun clickLogin() = apply {
-        clickButton(R.id.btnLogin)
-    }
+    fun setPassword(pass: String) = fillEditText(R.id.etPassword, pass)
 
-    fun clickSettings() = apply { clickButton(R.id.btnSettings) }
+    fun clickLogin() = clickButton(R.id.btnLogin)
 
-    fun matchErrorText(err: Int): ViewInteraction {
-        return matchText(textView(android.R.id.message), context.getString(err))
-    }
-
-    fun toggleNotifications() = apply {
-        clickListItem(android.R.id.list, 0)
-    }
-
-    fun toggleNightMode() = apply {
-        clickListItem(android.R.id.list, 1)
-    }
-    fun sleep()=apply {
-        Thread.sleep(500)
-    }
-
-    fun screenShot(tag:String) = apply {
-        sleep()
-        TestUtils.screenShot(tag)
-    }
+    fun matchErrorText(err: String) = matchText(textView(android.R.id.message), err)
 
 }

@@ -17,6 +17,9 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'spoon'
 
+apply plugin: "com.jaredsburrows.spoon"
+
+
 
 
 
@@ -39,12 +42,12 @@ android {
         //grantAllPermissions = true
     }
 
-    compileSdkVersion 25
+    compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.espressorobot"
-        minSdkVersion 15
-        targetSdkVersion 25
-        buildToolsVersion "25.0.2"
+        minSdkVersion 16
+        targetSdkVersion 27
+        buildToolsVersion "27.0.3"
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -63,7 +66,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile 'com.android.support:appcompat-v7:25.4.0'
+    compile 'com.android.support:appcompat-v7:27.1.1'
     compile 'com.jraska:falcon:1.0.4'
 
 
@@ -72,5 +75,6 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
     androidTestCompile 'com.squareup.spoon:spoon-client:1.7.1'
     androidTestCompile 'com.jraska:falcon-spoon-compat:1.0.4'
+    androidTestCompile "com.squareup.spoon:spoon-client:2.0.0-SNAPSHOT"
 
 }
