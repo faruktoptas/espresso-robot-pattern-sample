@@ -12,35 +12,54 @@ See the medium posts for more details:
 ```kotlin
 @Test
 fun loginMissingEmailPassword() {
-    robot
-            .clickLogin()
-            .matchErrorText(R.string.missing_fields)
+    login {
+        clickLogin()
+        matchErrorText(string(R.string.missing_fields))
+    }
 }
 
 @Test
 fun loginMissingPassword() {
-    robot
-            .setEmail("mail@example.com")
-            .clickLogin()
-            .matchErrorText(R.string.missing_fields)
+    login {
+        setEmail("mail@example.com")
+        clickLogin()
+        matchErrorText(string(R.string.missing_fields))
+    }
 }
 
 @Test
 fun loginWrongPassword() {
-    robot
-            .setEmail("mail@example.com")
-            .setPassword("wrong")
-            .clickLogin()
-            .matchErrorText(R.string.login_fail)
+    login {
+        setEmail("mail@example.com")
+        setPassword("wrong")
+        clickLogin()
+        matchErrorText(string(R.string.login_fail))
+    }
+
 }
 
 @Test
 fun loginSuccess() {
-    robot
-            .setEmail("mail@example.com")
-            .setPassword("pass")
-            .clickLogin()
-            .matchText(R.id.tvName, mActivityTestRule.activity.getString(R.string.name_surname))
+    login {
+        setEmail("mail@example.com")
+        setPassword("pass")
+        clickLogin()
+        matchText(R.id.tvName, string(R.string.name_surname))
+    }
+}
+
+@Test
+fun loginProfileAndSettings() {
+    login {
+        setEmail("mail@example.com")
+        setPassword("pass")
+        clickLogin()
+    }
+    profile {
+        clickSettings()
+        toggleNotifications()
+        toggleNightMode()
+    }
 }
 ```
 
