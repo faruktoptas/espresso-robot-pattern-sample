@@ -6,7 +6,7 @@ import android.support.test.runner.lifecycle.ActivityLifecycleMonitorRegistry;
 import android.support.test.runner.lifecycle.Stage;
 import android.util.Log;
 
-import com.jraska.falcon.FalconSpoon;
+import com.jraska.falcon.FalconSpoonRule;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -30,8 +30,8 @@ public class TestUtils {
         return currentActivity[0];
     }
 
-    public static void screenShot(String tag) {
-        FalconSpoon.screenshot(getCurrentActivity(), tag);
+    public static void screenShot(FalconSpoonRule rule, String tag) {
+        rule.screenshot(getCurrentActivity(), tag);
         Log.i("asd", "Screenshot taken: " + tag);
     }
 }

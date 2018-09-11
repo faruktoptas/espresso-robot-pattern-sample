@@ -3,10 +3,6 @@ buildscript {
         jcenter()
         mavenCentral()
     }
-
-    dependencies {
-        classpath 'com.stanfy.spoon:spoon-gradle-plugin:1.2.2'
-    }
 }
 
 apply plugin: 'com.android.application'
@@ -14,8 +10,6 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
-
-apply plugin: 'spoon'
 
 apply plugin: "com.jaredsburrows.spoon"
 
@@ -64,17 +58,16 @@ android {
 
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    compile 'com.android.support:appcompat-v7:27.1.1'
-    compile 'com.jraska:falcon:1.0.4'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.jraska:falcon:2.1.0'
 
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    androidTestImplementation "com.squareup.spoon:spoon-client:2.0.0-SNAPSHOT"
+    androidTestImplementation 'com.jraska:falcon-spoon-compat:2.1.0'
 
-    testCompile 'junit:junit:4.12'
-    androidTestCompile 'com.android.support.test:runner:1.0.1'
-    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.1'
-    androidTestCompile 'com.squareup.spoon:spoon-client:1.7.1'
-    androidTestCompile 'com.jraska:falcon-spoon-compat:1.0.4'
-    androidTestCompile "com.squareup.spoon:spoon-client:2.0.0-SNAPSHOT"
 
 }

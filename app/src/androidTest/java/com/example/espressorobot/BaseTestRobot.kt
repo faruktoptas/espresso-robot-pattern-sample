@@ -7,6 +7,7 @@ import android.support.test.espresso.action.ViewActions
 import android.support.test.espresso.assertion.ViewAssertions
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.withId
+import com.jraska.falcon.FalconSpoonRule
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.anything
 
@@ -37,9 +38,9 @@ open class BaseTestRobot {
         Thread.sleep(500)
     }
 
-    fun screenShot(tag: String) {
+    fun screenShot(rule: FalconSpoonRule, tag: String) {
         sleep()
-        TestUtils.screenShot(tag)
+        TestUtils.screenShot(rule, tag)
     }
 
 }
